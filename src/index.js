@@ -7,11 +7,11 @@ import {createStore} from "redux";
 import {Provider} from "react-redux";
 
 
-let initialState = {user: []};
-const rootReducer = (state = initialState, action) => {
+
+const rootReducer = (state = {users: []}, action) => {
     switch (action.type) {
         case "FETCH_USERS":
-            return {...state,users:[...action.payload]}
+            return {...state,users:[...action.payload]};
         default:
             return state;
 

@@ -10,12 +10,12 @@ export default function App() {
 
     useEffect(() => {
         getUsers().then(value => {
-            dispatch({type: "FETCH_USERS", payload: value})
+            dispatch({type: 'FETCH_USERS', payload: value});
         })
     }, [])
 
     return (
-        <div className="App">
+        <div>
             {
                 users.map((value) => <div>{value.name}</div>)
             }
