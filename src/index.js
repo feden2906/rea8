@@ -3,12 +3,31 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {createStore} from "redux";
+import {Provider} from "react-redux";
+
+
+let initialState = {user: []};
+const rootReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case "FETCH_USERS":
+            return {...state,users:[...action.payload]}
+        default:
+            return state;
+
+    }
+
+}
+
+export let store = createStore(rootReducer);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <Provider store={store}>
+            <App/>
+        </Provider>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
